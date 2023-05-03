@@ -2,7 +2,9 @@ import './style.css';
 import reload from './reload.svg';
 import enter from './enter.svg';
 import renderList from './renderList.js';
-import { addTask, removeTask, editTask, deleteAllCompleted } from './addAndRemove.js';
+import {
+  addTask, removeTask, editTask, deleteAllCompleted,
+} from './addAndRemove.js';
 import toggleComplete from './toggleComplete.js';
 
 const addForm = document.getElementById('add-form');
