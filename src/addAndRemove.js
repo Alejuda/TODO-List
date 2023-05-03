@@ -8,7 +8,7 @@ export const addTask = (desc) => {
     list = [];
   }
   const newTask = {
-    id: list.length,
+    id: list.length + 1,
     desc,
     completed: false,
   };
@@ -25,8 +25,8 @@ export const removeTask = (id) => {
   }
   const remove = list.findIndex((task) => task.id === id);
   list.splice(remove, 1);
-  for (let i = id; i < list.length; i += 1) {
-    list[i].id = i;
+  for (let i = id-1; i < list.length; i += 1) {
+    list[i].id = i + 1;
   }
   localStorage.setItem('tasks-list', JSON.stringify(list));
   renderList(list);
@@ -55,7 +55,7 @@ export const editTask = (id) => {
       toggleImgMore.classList.remove('hide');
       toggleImgTrash.classList.add('hide');
       textArea.parentElement.classList.remove('on-change');
-    }, 110);
+    }, 200);
   });
   textArea.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
