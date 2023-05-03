@@ -12,9 +12,10 @@
         <h2>Today's To Do</h2>
         <img class="reload-icon" id="reload-img" alt="reload" />
       </div>
-      <form class="add-form">
+      <form class="add-form" id="add-form">
         <input
           class="add-input"
+          id="add-input"
           type="text"
           required
           placeholder="Add to your list..."
@@ -22,7 +23,9 @@
         <img id="enter-icon" class="enter-icon" alt="intro" />
       </form>
       <ul class="todo-list" id="todo-list"></ul>
-      <div class="clear-btn">Clear all completed</div>
+      <div class="clear-btn" onclick="deleteAllCompleted()">
+        Clear all completed
+      </div>
     </section>
   </body>
 </html>
