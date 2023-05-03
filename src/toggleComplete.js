@@ -1,7 +1,7 @@
-import renderList from "./renderList.js";
+import renderList from './renderList.js';
 
 const toggleComplete = (id) => {
-  let list = JSON.parse(localStorage.getItem("tasks-list"));
+  let list = JSON.parse(localStorage.getItem('tasks-list'));
   if (list === null) {
     list = [];
   }
@@ -11,7 +11,7 @@ const toggleComplete = (id) => {
   } else {
     list[toggle].completed = false;
   }
-  localStorage.setItem("tasks-list", JSON.stringify(list));
+  localStorage.setItem('tasks-list', JSON.stringify(list));
   renderList();
 };
 

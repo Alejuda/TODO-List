@@ -113,17 +113,17 @@ body {
   height: 100%;
   cursor: move;
   opacity: 0.6;
-  transform: all 100ms;
+  transition: all 100ms;
 }
 
 .trash-logo {
   opacity: 0.6;
   height: 100%;
   cursor: pointer;
-  transform: all 100ms;
+  transition: all 100ms;
 }
 
-.more-logo:hover, 
+.more-logo:hover,
 .trash-logo:hover {
   opacity: 1;
   transform: scale(1.1);
