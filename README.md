@@ -62,7 +62,7 @@ With this project, managing your daily tasks has never been easier. Give it a tr
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> comming soon!
+You can see the live demo here: [Go Live](https://alejuda.github.io/TODO-List/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
