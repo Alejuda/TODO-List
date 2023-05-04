@@ -17,10 +17,9 @@ export const toggleComplete = (id) => {
 
 export const deleteAllCompleted = () => {
   const list = JSON.parse(localStorage.getItem('tasks-list'));
-  let newList = list.filter((task) => task.completed === false);
+  const newList = list.filter((task) => task.completed === false);
   for (let i = 0; i < newList.length; i += 1) {
     newList[i].id = i + 1;
-    console.log('im in')
   }
   localStorage.setItem('tasks-list', JSON.stringify(newList));
   renderList();

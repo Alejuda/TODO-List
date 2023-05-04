@@ -3,9 +3,9 @@ import reload from './reload.svg';
 import enter from './enter.svg';
 import renderList from './renderList.js';
 import {
-  addTask, removeTask, editTask
+  addTask, removeTask, editTask,
 } from './addAndRemove.js';
-import {deleteAllCompleted, toggleComplete} from './toggleCompleteAndDeleteCompleted.js';
+import { deleteAllCompleted, toggleComplete } from './toggleCompleteAndDeleteCompleted.js';
 
 const addForm = document.getElementById('add-form');
 const addInput = document.getElementById('add-input');
