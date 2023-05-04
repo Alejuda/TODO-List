@@ -1,6 +1,6 @@
 import renderList from './renderList.js';
 
-const toggleComplete = (id) => {
+export const toggleComplete = (id) => {
   let list = JSON.parse(localStorage.getItem('tasks-list'));
   if (list === null) {
     list = [];
@@ -15,4 +15,13 @@ const toggleComplete = (id) => {
   renderList();
 };
 
-export default toggleComplete;
+export const deleteAllCompleted = () => {
+  const list = JSON.parse(localStorage.getItem('tasks-list'));
+  let newList = list.filter((task) => task.completed === false);
+  for (let i = 0; i < newList.length; i += 1) {
+    newList[i].id = i + 1;
+    console.log('im in')
+  }
+  localStorage.setItem('tasks-list', JSON.stringify(newList));
+  renderList();
+};

@@ -65,10 +65,3 @@ export const editTask = (id) => {
     }
   });
 };
-
-export const deleteAllCompleted = () => {
-  const list = JSON.parse(localStorage.getItem('tasks-list'));
-  const newList = list.filter((task) => task.completed === false);
-  localStorage.setItem('tasks-list', JSON.stringify(newList));
-  renderList();
-};
