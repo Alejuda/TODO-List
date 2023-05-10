@@ -21,7 +21,7 @@ const renderList = () => {
 })" class="task-description ${task.completed ? 'line-through' : ''}">${
   task.desc
 }</textarea>
-              <img class="more-logo" id="toggle-more-${
+<img class="more-logo" id="toggle-more-${
   task.id
 }" alt="move" src="${moreLogo}"/>
               <img class="trash-logo hide" id="toggle-trash-${
