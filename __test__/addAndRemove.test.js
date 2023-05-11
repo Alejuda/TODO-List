@@ -1,11 +1,11 @@
-import { addTask, removeTask } from './functionTests.js';
+import { addTask, removeTask, toggleComplete, deleteAllCompleted } from './functionTests.js';
 
 const localStorageMock = (() => {
   let store = {};
 
   return {
     store,
-    getItem: ((key) => store[key] || []),
+    getItem: ((key) => (store[key]) || []),
     setItem: ((key, value) => {
       store[key] = JSON.stringify(value);
     }),
@@ -55,3 +55,28 @@ describe('removeTask', () => {
     expect(JSON.parse(localStorage.store['tasks-list'])).toStrictEqual('[]');
   });
 });
+
+describe('toggleCmplete', () => {
+  it('should toggle completed atribute of a task in the localStorage', () => {
+    const toggleId = 1;
+    const toggleList = [
+      {
+        id: 1,
+        desc: 'New task',
+        completed: false,
+      },
+    ];
+    const localExpected = [
+      {
+        id: 1,
+        desc: 'New task',
+        completed: true,
+      },
+    ];
+
+    localStorage.setItem('tasks-list', toggleList);
+
+    toggleComplete(toggleId);
+    expect(JSON.parse(localStorage.store['tasks-list'])).toStrictEqual(localExpected);
+  });
+})
