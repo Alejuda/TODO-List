@@ -1,4 +1,6 @@
-import { addTask, removeTask, toggleComplete, deleteAllCompleted } from './functionTests.js';
+import {
+  addTask, removeTask, toggleComplete, deleteAllCompleted,
+} from './functionTests.js';
 
 const localStorageMock = (() => {
   let store = {};
@@ -57,7 +59,7 @@ describe('removeTask', () => {
 });
 
 describe('toggleCmplete', () => {
-  it('should toggle completed atribute of a task in the localStorage', () => {
+  it('should toggle completed attribute of a task in the localStorage', () => {
     const toggleId = 1;
     const toggleList = [
       {
@@ -79,4 +81,52 @@ describe('toggleCmplete', () => {
     toggleComplete(toggleId);
     expect(JSON.parse(localStorage.store['tasks-list'])).toStrictEqual(localExpected);
   });
-})
+});
+
+describe('removeCompleted task', () => {
+  it('should remove the task marked as completed', () => {
+    const deleteContents = [
+      {
+        id: 1,
+        desc: 'New task',
+        completed: false,
+      },
+      {
+        id: 2,
+        desc: 'New task',
+        completed: true,
+      },
+    ];
+    const localExpected = [
+      {
+        id: 1,
+        desc: 'New task',
+        completed: false,
+      },
+    ];
+
+    localStorage.setItem('tasks-list', deleteContents);
+
+    deleteAllCompleted(deleteContents);
+    expect(JSON.parse(localStorage.store['tasks-list'])).toStrictEqual(localExpected);
+  });
+  it('should not remove the task not marked as completed', () => {
+    const deleteContents = [
+      {
+        id: 1,
+        desc: 'New task',
+        completed: false,
+      },
+      {
+        id: 2,
+        desc: 'New task',
+        completed: false,
+      },
+    ];
+
+    localStorage.setItem('tasks-list', deleteContents);
+
+    deleteAllCompleted(deleteContents);
+    expect(JSON.parse(localStorage.store['tasks-list'])).toStrictEqual(deleteContents);
+  });
+});

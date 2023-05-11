@@ -45,5 +45,5 @@ export const deleteAllCompleted = () => {
   for (let i = 0; i < newList.length; i += 1) {
     newList[i].id = i + 1;
   }
-  localStorage.setItem('tasks-list', JSON.stringify(newList));
+  localStorage.setItem('tasks-list', newList);
 };
