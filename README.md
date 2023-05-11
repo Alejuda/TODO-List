@@ -106,7 +106,11 @@ your default browser should be opened in this moment.
 
 ### Run tests
 
-> Comming soon.
+You can run tests with the following command:
+
+```sh
+npm test
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
