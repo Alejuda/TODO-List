@@ -47,3 +47,29 @@ export const deleteAllCompleted = () => {
   }
   localStorage.setItem('tasks-list', newList);
 };
+
+export const editTask = (id) => {
+  const list = JSON.parse(localStorage.getItem('tasks-list'));
+  const textArea = document.getElementById(`text-area-${id}`);
+
+  const edit = list.findIndex((task) => task.id === id);
+
+  textArea.addEventListener('change', () => {
+    list[edit].desc = textArea.value;
+    textArea.innerText = list[edit].desc;
+    localStorage.setItem('tasks-list', JSON.stringify(list));
+  });
+  textArea.addEventListener('blur', () => {
+    localStorage.setItem('tasks-list', JSON.stringify(list));
+    setTimeout(() => {
+      textArea.parentElement.classList.remove('on-change');
+    }, 200);
+  });
+  textArea.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      localStorage.setItem('tasks-list', JSON.stringify(list));
+      textArea.innerText = list[edit].desc;
+      textArea.blur();
+    }
+  });
+};

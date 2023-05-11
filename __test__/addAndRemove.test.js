@@ -1,26 +1,11 @@
+import { JSDOM } from 'jsdom';
 import {
-  addTask, removeTask, toggleComplete, deleteAllCompleted,
+  addTask, removeTask, toggleComplete, deleteAllCompleted, editTask,
 } from './functionTests.js';
 
-const localStorageMock = (() => {
-  let store = {};
-
-  return {
-    store,
-    getItem: ((key) => (store[key]) || []),
-    setItem: ((key, value) => {
-      store[key] = JSON.stringify(value);
-    }),
-    removeItem: ((key) => {
-      delete store[key];
-    }),
-    clear: (() => {
-      store = {};
-    }),
-  };
-})();
-
-global.localStorage = localStorageMock;
+const dom = new JSDOM('<!doctype html><html><body></body></html>');
+global.window = dom.window;
+global.document = window.document;
 
 describe('addTask', () => {
   it('should add a new task to the list in localStorage', () => {
@@ -128,5 +113,32 @@ describe('removeCompleted task', () => {
 
     deleteAllCompleted(deleteContents);
     expect(JSON.parse(localStorage.store['tasks-list'])).toStrictEqual(deleteContents);
+  });
+});
+
+describe('editTask', () => {
+  beforeEach(() => {
+    document.body.innerHTML = `
+      <textarea id="text-area-1"></textarea>
+      <textarea id="text-area-2"></textarea>
+    `;
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('should edit the description of the task with the parameter id', () => {
+    const deleteContents = [
+      {
+        id: 1,
+        desc: 'EDIT TASK',
+        completed: false,
+      },
+    ];
+
+    localStorage.setItem('tasks-list', deleteContents);
+
+    editTask(1);
   });
 });
