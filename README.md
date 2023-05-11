@@ -30,7 +30,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Awesome-Books <a name="about-project"></a>
+# 📖 TODO-LIST <a name="about-project"></a>
 
 Introducing my simple and easy-to-use **ToDo List project**! This project allows users to create, edit, and remove tasks from their lists with ease. In addition, users can select and remove completed tasks with a single click, simplifying their workflow and helping them stay on top of their tasks.
 
@@ -106,7 +106,11 @@ your default browser should be opened in this moment.
 
 ### Run tests
 
-> Comming soon.
+You can run tests with the following command:
+
+```sh
+npm test
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
